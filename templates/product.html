@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block base %}
+    <div class="container target">
+        <fieldset class="parent">
+            <legend class="heading">{{category.cname}}</legend>
+            {% for product in products %}
+                <div class="child">
+                    <img src="{{product.ppic.url}}" class="prodpic">
+                    <h1 class="product-heading">{{product.pname}}</h1>
+                    <div class="sub-sec">
+                        <div class="price-sec">
+                            <p class="price">{{product.price}}</p>
+                            <i class="fas fa-rupee-sign rupee-1"></i>
+                        </div>
+                        <p class="amount">per.{{product.amount}}</p>
+                    </div>
+                    <a href="{% url 'basket_app:add-to-cart' pk=product.pk %}" class="btn-container">
+                        <button class="add-btn">Add To Cart</button>
+                    </a>
+                </div>
+            {% endfor %}
+        </fieldset>
+        <a href="#home" class="scroll-up-btn">
+            <i class="fas fa-arrow-up"></i> 
+        </a>
+    </div>
+{% endblock %}

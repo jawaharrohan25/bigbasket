@@ -1,0 +1,22 @@
+{% extends "basket_app/basket_app_base.html" %}
+{% block body_block %}
+{% load widget_tweaks %}
+{% load static %}      
+    <form class="sign-up input-form" method="POST">
+        <h1 class="form-heading">Sign Up</h1>
+        {% csrf_token %}
+        <div class="input-field">
+            <h1 class="input-heading">{{ customer_form.username.label }}</h1>
+            {% render_field customer_form.username class="input-box" placeholder="Enter username" %}
+        </div>
+        <div class="input-field">
+            <h1 class="input-heading">{{ customer_form.password.label }}</h1>
+            {% render_field customer_form.password class="input-box" placeholder="Enter password" %}
+        </div>
+        <div class="input-field">
+            <h1 class="input-heading">{{ customer_form.email.label }}</h1>
+            {% render_field customer_form.email class="input-box" placeholder="Enter email" %}
+        </div>
+        <input type="submit" class="btn input-field" value="Register">
+    </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block base %}
+{% load static %}
+    <div class="container target">
+        <h1 class="heading">YOUR ORDERS</h1>
+        {% if check %}
+            <p class="warning">You currently have no orders!!!</p>
+            <a href="{% url 'index' %}">
+                <button class="btn green"><i class="fas fa-arrow-left redirect"></i>Start Shopping</button>
+            </a>
+        {% else %}
+            <div class="all-orders">
+                {% for order in orderr %}
+                    <a href="{% url 'basket_app:orderdetail' pk=order.pk %}">
+                        <div class="order-info">
+                            <h1 class="order"><span class="field">Name:</span> {{order.receiver.recname}}</h1>
+                            <h1 class="order"><span class="field">Order Date:</span> {{order.order_date}}</h1>
+                            <h1 class="order"><span class="field">Arriving Date:</span> {{order.order_date}}</h1>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <a href="#home" class="scroll-up-btn">
+            <i class="fas fa-arrow-up"></i> 
+        </a>
+    </div>
+{% endblock %}

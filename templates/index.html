@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block base %}
+{% load static %}
+        <div class="back-container target">
+            <!-- <div class="main-back">
+                <img src="{% static 'logo/background.jpg' %}" class="background">
+            </div> -->
+            <div class="back-info">
+                <div class="z">
+                    <h1 class="back-info-1">Welcome to FRESH BASKET</h1>
+                </div>
+                <div class="z">
+                    <h1 class="back-info-2">Your one stop shop for all your grocery needs.</h1>
+                </div>
+                {% if user.is_authenticated %}
+
+                {% else %}
+                    <div class="z">
+                        <h1 class="back-info-3">Login or SignUp to start shopping</h1>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="container target">
+                <fieldset class="parent">
+                    <legend class="heading">Categories</legend>
+                    {% for category in cat %}
+                    <a href="{% url 'basket_app:product' category.slug %}">
+                        <fieldset class="child">
+                            <legend class="category-heading">{{category.cname}}</legend>
+                            <img src="{{category.cpic.url}}" class="catpic">
+                        </fieldset>
+                    </a>
+                    {% endfor %}
+                </fieldset>
+            </div>
+        {% else %}
+        
+        {% endif %}
+{% endblock %}

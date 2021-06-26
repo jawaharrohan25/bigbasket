@@ -1,0 +1,23 @@
+{% extends "basket_app/basket_app_base.html" %}
+{% block body_block %}
+{% load widget_tweaks %}
+{% load static %}
+    <form class="fillup" method="POST">
+        <h1 class="form-heading">Delivery Details</h1>
+        {% csrf_token %}
+        <div class="input-field">
+            <h1 class="input-heading">Name</h1>
+            {% render_field form.recname class="input-box" placeholder="Name" %}
+        </div>
+        <div class="input-field">
+            <h1 class="input-heading">Phone No</h1>
+            {% render_field form.phone minlength="10" maxlength="10" class="input-box" placeholder="Phone Number" %}
+        </div>
+        <div class="input-field">
+            <h1 class="input-heading">Address</h1>
+            {% render_field form.address class="input-box" placeholder="Deliver to Address" %}
+        </div>
+            
+        <input type="submit" class="btn input-field" value="Submit">
+    </form>
+{% endblock %}

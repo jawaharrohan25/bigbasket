@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block base %}
+{% load static %}
+<div class="container target">
+    <h1 class="heading">ORDER SUMMARY</h1>
+    <div class="ordered-info">
+        <h1 class="order"><span class="field">Name:</span> {{orderr.receiver.recname}}</h1>
+        <h1 class="order"><span class="field">Phone:</span> {{orderr.receiver.phone}}</h1>
+        <h1 class="order"><span class="field">Address:</span> {{orderr.receiver.address}}</h1>
+
+        <h1 class="order"><span class="field">Order Date:</span> {{orderr.order_date}}</h1>
+        <h1 class="order"><span class="field">Arriving Date:</span> {{orderr.order_date}}</h1>
+    </div>
+
+    
+    <div class="ordered-item">
+        <div class="column-names">
+            <div class="pname style-2">Product Name</div>
+            <div class="pmrp style-1">MRP(in Rs.)</div>
+            <div class="pqty style-1">Qty</div>
+            <div class="pprice style-3">Price(in Rs.)</div>
+        </div>
+        <div class="underline"></div>
+        {% for item in items %}
+            <div class="item-info">
+                <h1 class="pname style-2 common">{{item.product.pname}} <span class="pamount">/{{item.product.amount}}</span></h1>
+                <h1 class="pmrp style-1 common">{{item.product.price}}</h1>
+                <h1 class="pqty style-1 common">{{item.qty}}</h1>
+                <h1 class="pprice style-3 common">{{item.finalprice}}</h1>
+            </div>
+            <div class="underline"></div>
+        {% endfor %}
+        <h1 class="style-4">Grand Total: {{total}} Rs.</h1>
+
+        <a href="{% url 'basket_app:order' %}">
+            <button class="btn green"><i class="fas fa-arrow-left redirect"></i>Back to Orders</button>
+        </a>
+    </div>
+
+    <a href="#home" class="scroll-up-btn">
+        <i class="fas fa-arrow-up"></i> 
+    </a>
+</div>
+{% endblock %}

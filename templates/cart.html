@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block base %}
+{% load static %}
+    <div class="container target">
+        <h1 class="heading">CART SUMMARY</h1>
+        {% if check %}
+            <p class="warning">Your cart is empty</p>
+            <a href="{% url 'index' %}">
+                <button class="btn green"><i class="fas fa-arrow-left redirect"></i>Start Shopping</button>
+            </a>
+        {% else %}
+            <div class="options">
+                <a href="{% url 'index' %}">
+                    <button class="btn-1 green"><i class="fas fa-arrow-left redirect-2"></i> Continue Shopping</button>
+                </a>
+
+                <a href="{% url 'basket_app:fillup' %}">
+                    <button class="btn-1">Place Order <i class="fas fa-arrow-right redirect-2"></i></button>
+                </a>
+            </div>
+            {% for cp in cartproducts %}
+                <div class="cart-item">
+                    <img src="{{cp.product.ppic.url}}" class="cartpic">    
+                    <div class="sec"> 
+                        <div class="sec-1">
+                            <div class="info">
+                                <p class="product-name desc">{{cp.product.pname}}</p> 
+                                <div class="price-sec">
+                                    <p class="price">{{cp.product.price}}</p>
+                                    <i class="fas fa-rupee-sign rupee-1"></i>
+                                    <p class="amount carta">/{{cp.product.amount}}</p>
+                                </div>
+                            </div>
+                        
+                            <div class="qty">
+                                <a href="{% url 'basket_app:decrease-qty' pk=cp.product.pk %}"><i class="fas fa-minus symbol"></i></a>
+                                <p class="symbol">{{cp.qty}}</p>
+                                <a href="{% url 'basket_app:increase-qty' pk=cp.product.pk %}"><i class="fas fa-plus symbol"></i></a>
+                            </div>
+
+                            <div class="price-sec finalprice">
+                                <p class="price">{{cp.finalprice}}</p>
+                                <i class="fas fa-rupee-sign rupee-1"></i>
+                            </div>
+                        </div>
+
+                        <div class="sec-2">
+                            <a href="{% url 'basket_app:remove-product' pk=cp.product.pk %}">
+                                <input type="submit" class="btn remove" value="Remove From Cart">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <div class="price-sec total">
+                <p class="totalprice">Subtotal: <span class="totalprice">{{total}}</span></p>
+                <i class="fas fa-rupee-sign rupee-2"></i>
+            </div>
+
+            <a href="#home" class="scroll-up-btn">
+                <i class="fas fa-arrow-up"></i> 
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}
