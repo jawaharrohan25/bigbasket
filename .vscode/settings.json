@@ -1,0 +1,6 @@
+{
+    "git.ignoreLimitWarning": true,
+    "powershell.powerShellDefaultVersion": "django-envs\\\\Scripts\\activate.bat",
+    "python.defaultInterpreterPath": "django-envs\\\\Scripts\\activate.bat",
+    "python.terminal.activateEnvInCurrentTerminal": true
+}
