@@ -70,8 +70,6 @@
                     $("#display").empty();
                     
                     for (var key in response.category) {
-                        // console.log(response.category.count)
-                        // console.log(response.category[key].cname)
                         var temp = "<tr><th scope='row'>" + response.category[key].cname+ "</th></tr>";
                         $("#display").append(temp);
                     }

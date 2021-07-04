@@ -16,15 +16,15 @@ from django.views.generic import (View,TemplateView,ListView,DetailView,CreateVi
 from .models import *
 # Create your views here.
 
-def test(request):
+def test(request):     #added
 	return render (request,'test.html')
 
-def getUsers(request):
+def getUsers(request):   #added
     queryset = Category.objects.filter().order_by('-id')[:3]
     return JsonResponse({"category": list(queryset.values())})
 
 
-class base(ListView):
+class base(ListView):  
     template_name= 'base.html'
     model= Category
     context_object_name= "cat"
@@ -147,7 +147,6 @@ class OrderSummary(DetailView):
             context["total"]= total
 
         return context
-
 
 # Functionalities
 def add_to_cart(request,pk):
