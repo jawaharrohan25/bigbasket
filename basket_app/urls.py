@@ -19,5 +19,7 @@ urlpatterns = [
     path('order/',views.OrderView.as_view(), name='order'),
     path('ordered/<int:pk>/',views.OrderSummary.as_view(), name='orderdetail'),
     # path("category/<str:cname>",views.categories,name="category"),
+
+    
 ]
 

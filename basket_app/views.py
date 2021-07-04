@@ -10,9 +10,20 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
+from django.http import JsonResponse
+
 from django.views.generic import (View,TemplateView,ListView,DetailView,CreateView)
 from .models import *
 # Create your views here.
+
+def test(request):
+	return render (request,'test.html')
+
+def getUsers(request):
+    queryset = Category.objects.filter().order_by('-id')[:3]
+    return JsonResponse({"category": list(queryset.values())})
+
+
 class base(ListView):
     template_name= 'base.html'
     model= Category
@@ -33,6 +44,8 @@ class index(ListView):
         else: 
             context["cat"]= Category.objects.all
         return context
+
+
 
 class ProductView(ListView):
     template_name= 'product.html'
@@ -127,8 +140,9 @@ class OrderSummary(DetailView):
                 context["items"]= item
 
                 total= 0 
-                for c in item:
-                    total= total + c.finalprice()
+
+            for c in item:
+                total= total + c.finalprice()
 
             context["total"]= total
 
@@ -205,6 +219,7 @@ class Orderform(CreateView):
         return context
     def post(self,request):
         receiver = OrderForm(data=request.POST)
+        print("lal")
         if receiver.is_valid():
             r = receiver.save(commit = False)
             r.save()

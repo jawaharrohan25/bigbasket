@@ -1,0 +1,5 @@
+
+
+C:/Users/T.Jawaharlal/django-env/Scripts/activate.bat
+python manage.py runserver
+python manage.py startapp firstapp    

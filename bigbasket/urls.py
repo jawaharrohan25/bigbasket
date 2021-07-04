@@ -25,6 +25,8 @@ urlpatterns = [
     path('',views.index.as_view(), name='index'),
     path('',views.base.as_view(), name='base'),
     path('sign-up/',views.signup, name='sign_up'),
+    path("test/",views.test,name="test"),
+    path("getUsers/",views.getUsers,name="getUsers"),
     path('basket_app/',include("basket_app.urls",namespace="basket_app")),
 ]
 
