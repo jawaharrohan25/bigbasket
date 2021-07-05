@@ -1,7 +1,7 @@
 {
     "git.ignoreLimitWarning": true,
     "powershell.powerShellDefaultVersion": "C:\\Users\\T.Jawaharlal\\django-env\\Scripts\\activate.bat",
-    "python.defaultInterpreterPath": "C:\\Users\\T.Jawaharlal\\Miniconda3\\envs\\python38\\Scripts\\activate.bat",
+    "python.defaultInterpreterPath": "conda activate python38",
     "python.terminal.activateEnvInCurrentTerminal": true,
     "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "[python]": {
