@@ -42,3 +42,5 @@ for state in states['state']:
 
     df[df['state'] ==state][['first_dose','second_dose','Total']].plot(title=state + ' : Vaccine Data')
     
+
+
